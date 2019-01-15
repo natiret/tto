@@ -55,6 +55,8 @@
     }
   },
   "variables": {
+    "storageAccountType": "Standard_LRS",
+    "infraStorageAccountName": "[concat('storeinfra', uniquestring(resourceGroup().id))]",
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
     "ubuntuOSVersion": "16.04-LTS",
@@ -68,6 +70,18 @@
     "publicIPAddressName": "vmPublicIp"
   },
   "resources": [
+    {
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('infraStorageAccountName')]",
+        "apiVersion": "2017-06-01",
+        "location": "[parameters('location')]",
+        "comments": "This storage account is for infrastructure (e.g. vm disks)",
+        "kind": "Storage",
+        "sku": {
+          "name": "[variables('storageAccountType')]"
+        },
+        "properties": {}
+    },
     {
         "apiVersion": "2017-10-01",
         "type": "Microsoft.Network/publicIPAddresses",
@@ -163,7 +177,8 @@
         "name": "[parameters('vmName')]",
         "location": "[parameters('location')]",
         "dependsOn": [
-          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+            "[concat('Microsoft.Storage/storageAccounts/', variables('infraStorageAccountName'))]",
+            "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
         ],
         "properties": {
           "hardwareProfile": {
