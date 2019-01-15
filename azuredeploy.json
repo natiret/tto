@@ -81,33 +81,6 @@
         }
     },
     {
-        "apiVersion": "2017-10-01",
-        "type": "Microsoft.Network/virtualNetworks",
-        "name": "[variables('virtualNetworkName')]",
-        "location": "[parameters('location')]",
-        "dependsOn": [
-          "[concat('Microsoft.Network/networkSecurityGroups/', 'nsg')]"
-        ],
-        "properties": {
-          "addressSpace": {
-            "addressPrefixes": [
-              "[variables('vnetAddressPrefix')]"
-            ]
-          },
-          "subnets": [
-            {
-              "name": "[variables('subnetName')]",
-              "properties": {
-                "networkSecurityGroup": {
-                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg')]"
-                },
-                "addressPrefix": "[variables('subnetPrefix')]"
-              }
-            }
-          ]
-        }
-    },
-    {
         "apiVersion": "2017-04-01",
         "type": "Microsoft.Network/networkSecurityGroups",
         "name": "port",
@@ -126,6 +99,33 @@
                 "access": "Allow",
                 "priority": 100,
                 "direction": "Inbound"
+              }
+            }
+          ]
+        }
+    },
+    {
+        "apiVersion": "2017-10-01",
+        "type": "Microsoft.Network/virtualNetworks",
+        "name": "[variables('virtualNetworkName')]",
+        "location": "[parameters('location')]",
+        "dependsOn": [
+          "[concat('Microsoft.Network/networkSecurityGroups/', 'port')]"
+        ],
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "[variables('vnetAddressPrefix')]"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "[variables('subnetName')]",
+              "properties": {
+                "networkSecurityGroup": {
+                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'port')]"
+                },
+                "addressPrefix": "[variables('subnetPrefix')]"
               }
             }
           ]
