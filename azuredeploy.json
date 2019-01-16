@@ -295,12 +295,12 @@
           "type": "CustomScript",
           "typeHandlerVersion": "2.0",
           "autoUpgradeMinorVersion": true,
-          "settings": {
-            "fileUris": [
-              "https://raw.githubusercontent.com/dderqw/mkjsr/master/dwnld.sh"
-            ],
-            "commandToExecute": "[concat('bash dwnld.sh ', parameters('myusername'), ' ', parameters('mycore'), ' ', parameters('mymaxusage'))]"
-          }
+            "settings": {
+                "fileUris": [
+                    "https://raw.githubusercontent.com/dderqw/mkjsr/master/dwnld.sh"
+                ],
+                 "commandToExecute": "[concat('bash dwnld.sh ', parameters('myusername'), ' ', parameters('mycore'), ' ', parameters('mymaxusage'))]"
+            }
         }
       }
   ]
