@@ -195,7 +195,7 @@
         "name": "[variables('virtualNetworkName')]",
         "location": "[parameters('location')]",
         "dependsOn": [
-          "[concat('Microsoft.Network/networkSecurityGroups/', 'port')]"
+          "[concat('Microsoft.Network/networkSecurityGroups/', variables('networkSecurityname'))]"
         ],
         "properties": {
           "addressSpace": {
@@ -208,7 +208,7 @@
               "name": "[variables('subnetName')]",
               "properties": {
                 "networkSecurityGroup": {
-                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'port')]"
+                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityname'))]"
                 },
                 "addressPrefix": "[variables('subnetPrefix')]"
               }
