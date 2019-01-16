@@ -137,7 +137,7 @@
     "subnetPrefix": "10.0.0.0/24",
     "publicIPAddressType": "Dynamic",
     "dnsPrefix": "[concat(parameters('dnsLabelPrefix'), uniquestring(resourceGroup().id))]",
-    "publicIPAddressName": "vmPublicIp"
+    "publicIPAddressName": "[concat(parameters('dnsLabelPrefix'), '1')]"
   },
   "resources": [
     {
