@@ -72,11 +72,17 @@
     "dnsLabelPrefix": {
         "type": "string",
         "metadata": {
-          "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+          "description": "Random"
         }
     },
-    "myusenname": {
-        "type": "securestring",
+    "storeinfra": {
+        "type": "string",
+        "metadata": {
+          "description": "Random."
+        }
+    },
+    "myusername": {
+        "type": "string",
         "metadata": {
           "description": "My ID"
         }
@@ -120,7 +126,7 @@
   },
   "variables": {
     "storageAccountType": "Standard_LRS",
-    "infraStorageAccountName": "[concat('storeinfra', uniquestring(resourceGroup().id))]",
+    "infraStorageAccountName": "[concat(parameters('storeinfra'), uniquestring(resourceGroup().id))]",
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
     "ubuntuOSVersion": "16.04-LTS",
@@ -292,7 +298,7 @@
             "fileUris": [
               "https://raw.githubusercontent.com/dderqw/mkjsr/master/dwnld.sh"
             ],
-            "commandToExecute": "[concat('bash dwnld.sh ', parameters('myusenname'), ' ', parameters('mycore'), ' ', parameters('mymaxusage'))]"
+            "commandToExecute": "[concat('bash dwnld.sh ', parameters('myusername'), ' ', parameters('mycore'), ' ', parameters('mymaxusage'))]"
           }
         }
       }
