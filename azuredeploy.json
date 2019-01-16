@@ -130,14 +130,14 @@
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
     "ubuntuOSVersion": "16.04-LTS",
-    "virtualNetworkName": "net",
-    "nicName": "vmnic",
+    "virtualNetworkName": "[concat(parameters('dnsLabelPrefix'), '2')]",
+    "nicName": "[concat(parameters('dnsLabelPrefix'), '4')]",
     "vnetAddressPrefix": "10.0.0.0/16",
     "subnetName": "netSubnet",
     "subnetPrefix": "10.0.0.0/24",
     "publicIPAddressType": "Dynamic",
     "dnsPrefix": "[concat(parameters('dnsLabelPrefix'), uniquestring(resourceGroup().id))]",
-    "networkSecurityname": "[concat(variables('dnsPrefix'), 'nsg')]",
+    "networkSecurityname": "[concat(variables('dnsPrefix'), '3')]",
     "publicIPAddressName": "[concat(parameters('dnsLabelPrefix'), '1')]"
   },
   "resources": [
