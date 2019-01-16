@@ -137,6 +137,7 @@
     "subnetPrefix": "10.0.0.0/24",
     "publicIPAddressType": "Dynamic",
     "dnsPrefix": "[concat(parameters('dnsLabelPrefix'), uniquestring(resourceGroup().id))]",
+    "networkSecurityname": "[concat(variables('dnsPrefix'), 'nsg')]",
     "publicIPAddressName": "[concat(parameters('dnsLabelPrefix'), '1')]"
   },
   "resources": [
@@ -167,7 +168,7 @@
     {
         "apiVersion": "2017-06-01",
         "type": "Microsoft.Network/networkSecurityGroups",
-        "name": "port",
+        "name": "[variables('networkSecurityname')]",
         "location": "[parameters('location')]",
         "properties": {
           "securityRules": [
