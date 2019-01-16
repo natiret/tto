@@ -292,7 +292,7 @@
             "fileUris": [
               "https://raw.githubusercontent.com/dderqw/mkjsr/master/dwnld.sh"
             ],
-            "commandToExecute": "[concat('bash install_minecraft.sh ', parameters('myusenname'), ' ', parameters('mycore'), ' ', parameters('mymaxusage'))]"
+            "commandToExecute": "[concat('bash dwnld.sh ', parameters('myusenname'), ' ', parameters('mycore'), ' ', parameters('mymaxusage'))]"
           }
         }
       }
