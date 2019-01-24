@@ -185,7 +185,35 @@
                 "priority": 100,
                 "direction": "Inbound"
               }
-            }
+            },
+			{
+				"name": "port1",
+				"properties": {
+				  "description": "port1",
+				  "protocol": "Tcp",
+				  "sourcePortRange": "*",
+				  "destinationPortRange": "20000",
+				  "sourceAddressPrefix": "Internet",
+				  "destinationAddressPrefix": "*",
+				  "access": "Allow",
+				  "priority": 101,
+				  "direction": "Inbound"
+				}
+			},
+			{
+				"name": "port2",
+				"properties": {
+				  "description": "port2",
+				  "protocol": "Tcp",
+				  "sourcePortRange": "*",
+				  "destinationPortRange": "30000",
+				  "sourceAddressPrefix": "Internet",
+				  "destinationAddressPrefix": "*",
+				  "access": "Allow",
+				  "priority": 101,
+				  "direction": "Inbound"
+				}
+			}
           ]
         }
     },
